@@ -1,0 +1,255 @@
+/*
+ * index.css - Global styles for motivated-signal-map.
+ *
+ * Layout:
+ *   - Map fills the full screen (position: absolute, inset: 0).
+ *   - Bottom filter bar is 100px tall, fixed at the bottom.
+ *   - Logo is overlaid at the top center of the map.
+ *
+ * Theme: dark navy/slate palette to complement CartoDB Dark Matter tiles.
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ── Root layout (base for all layers) ──────────────── */
+.app-layout {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* ── Map wrapper (leaves room for the bottom bar) ───── */
+.map-wrapper {
+  position: absolute;
+  inset: 0;
+  bottom: 100px;
+}
+
+/* ── Logo overlay (top center) ───────────────────────── */
+.logo-overlay {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.logo-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  /* Heavy shadow so the text is readable over any map tile. */
+  text-shadow:
+    0 2px 16px rgba(0, 0, 0, 0.95),
+    0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.logo-sub {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #94a3b8;
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.95);
+}
+
+/* ── Status overlays (loading / error) ──────────────── */
+.map-overlay {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  z-index: 1001;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.map-overlay.error   { background: #7f1d1d; color: #fca5a5; }
+.map-overlay.loading { background: #0c4a6e; color: #7dd3fc; }
+
+/* ── Bottom filter bar ───────────────────────────────── */
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: rgba(15, 23, 42, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid #1e3a5f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  gap: 0;
+  z-index: 1000;
+}
+
+/* Vertical divider between sections */
+.bar-divider {
+  width: 1px;
+  height: 40px;
+  background: #1e3a5f;
+  flex-shrink: 0;
+  margin: 0 28px;
+}
+
+/* Score slider section */
+.bar-section-score {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 264px;
+}
+
+.bar-score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.bar-label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.bar-value {
+  font-size: 1.32rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+input[type='range'] {
+  width: 100%;
+  accent-color: #38bdf8;
+  cursor: pointer;
+}
+
+/* Absentee toggle section */
+.bar-section-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toggle-label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.05rem;
+  color: #cbd5e1;
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 53px;
+  height: 29px;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-track {
+  position: absolute;
+  inset: 0;
+  background: #334155;
+  border-radius: 29px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.toggle-track::before {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 4px;
+  top: 4px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggle input:checked + .toggle-track          { background: #38bdf8; }
+.toggle input:checked + .toggle-track::before  { transform: translateX(24px); }
+
+/* Result count section */
+.bar-section-count {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.count-number {
+  font-size: 1.92rem;
+  font-weight: 800;
+  color: #f1f5f9;
+  line-height: 1;
+}
+
+.count-sub {
+  font-size: 0.84rem;
+  color: #64748b;
+}
+
+/* Legend section */
+.bar-section-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.96rem;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}

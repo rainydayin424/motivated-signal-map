@@ -1,0 +1,30 @@
+# ── Python ────────────────────────────────────────
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# ── Data files (contains personal info / large size) ──
+backend/data/maricopa_sample_500.csv
+backend/data/geocode_cache.json
+
+# ── Node / Frontend ───────────────────────────────
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# ── Environment variables ──────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── OS / Editor ───────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
