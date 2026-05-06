@@ -4,9 +4,11 @@ Visualizes high-motivation real estate sellers in Maricopa County on an interact
 
 ## Screenshots
 
-![Map View](docs/screenshots/screenshot1.png)
+![Full map view](docs/screenshots/screenshot1.png)
+*All 500 sampled properties across Maricopa County, scored and color-coded.*
 
-![Filtered View](docs/screenshots/screenshot2.png)
+![Filtered with score 18+](docs/screenshots/screenshot2.png)
+*Filtered view (score ≥ 18) with a property popup showing address, score, and key signals. Sensitive details are blurred.*
 
 ## Features
 
@@ -35,7 +37,6 @@ Public bulk data from [Maricopa County Assessor](https://mcassessor.maricopa.gov
 | Geocoding | Census Batch Geocoder (free, no API key) |
 
 ## Scoring Formula
-
 ```
 motivation_score = (years_owned / 40) × 70 + absentee_owner × 30
 ```
@@ -68,7 +69,7 @@ npm run dev
 motivated-signal-map/
 ├── backend/
 │   ├── main.py               # FastAPI app & endpoints
-│   ├── model.py              # ML scorer
+│   ├── model.py              # Scoring logic
 │   ├── geocoder.py           # Census Batch Geocoder
 │   └── data/
 │       ├── maricopa_sample_500.csv
