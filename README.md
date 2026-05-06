@@ -4,9 +4,9 @@ Visualizes high-motivation real estate sellers in Maricopa County on an interact
 
 ## Screenshots
 
-| Map View | Filtered View |
-|----------|---------------|
-| ![Map](docs/screenshots/screenshot1.png) | ![Filtered](docs/screenshots/screenshot2.png) |
+![Map View](docs/screenshots/screenshot1.png)
+
+![Filtered View](docs/screenshots/screenshot2.png)
 
 ## Features
 
