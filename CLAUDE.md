@@ -25,7 +25,7 @@ Use Census Batch Geocoder (free, no API key, batch upload).
 Cache results to data/geocode_cache.json so reruns are instant.
 
 ## UI
-- Left sidebar: filter slider (min score), absentee owner toggle
+- Bottom bar (centered): filter slider (min score), absentee owner toggle, properties count, pin color legend
 - Main: fullscreen Leaflet map (dark theme, CartoDB Dark Matter tiles)
 - Pin click: popup showing address, score, years_owned, absentee_owner
 
@@ -33,4 +33,3 @@ Cache results to data/geocode_cache.json so reruns are instant.
 - Every file must have a header comment describing its purpose
 - Every function and class must have a docstring explaining what it does
 - All code and file names in English
-- Comments can be in Korean for explanation
