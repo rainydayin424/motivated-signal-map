@@ -6,7 +6,7 @@ Trained on real Maricopa County data (500 samples).
 ## Stack (REQUIRED)
 - Frontend: React + TypeScript + Leaflet (free, no API key)
 - Backend: Python + FastAPI
-- ML: scikit-learn (Logistic Regression or simple weighted scorer)
+- Rule-based weighted formula
 
 ## Data
 File: data/maricopa_sample_500.csv

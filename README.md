@@ -44,9 +44,9 @@ Public bulk data from [Maricopa County Assessor](https://mcassessor.maricopa.gov
 
 ## Scoring Formula
 
-​```
+```
 motivation_score = (years_owned / 40) × 70 + absentee_owner × 30
-​```
+```
 
 `years_owned` gets 70 points because it's a continuous signal — the longer someone has held a property, the more likely they are to be open to selling. `absentee_owner` gets 30 as a flat bonus: non-resident owners tend to be more transactional, but it's a binary flag with less resolution, so it plays a supporting role.
 
@@ -54,21 +54,21 @@ motivation_score = (years_owned / 40) × 70 + absentee_owner × 30
 
 ### Backend
 
-​```bash
+```bash
 cd backend
 python -m venv .venv
 .venv\Scripts\activate        # Windows
 pip install -r requirements.txt
 uvicorn main:app --reload
-​```
+```
 
 ### Frontend
 
-​```bash
+```bash
 cd frontend
 npm install
 npm run dev
-​```
+```
 
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
@@ -76,7 +76,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## Project Structure
 
-​```
+```
 motivated-signal-map/
 ├── backend/
 │   ├── main.py               # FastAPI app & endpoints
@@ -92,7 +92,7 @@ motivated-signal-map/
 │       └── api/
 └── docs/
     └── screenshots/
-​```
+```
 
 ## License
 
