@@ -1,21 +1,27 @@
 # motivated-signal-map
 
-Visualizes high-motivation real estate sellers in Maricopa County on an interactive map.
+A visual prospecting tool for real estate agents. Identifies homeowners likely open to selling based on tenure and absentee ownership, then plots them on an interactive Maricopa County map with motivation-level filtering.
 
-## Screenshots
+> Built as a portfolio project. Live demo runs on a 500-property sample of public Maricopa County records.
+
+## Demo
 
 ![Full map view](docs/screenshots/screenshot1.png)
-*All 500 sampled properties across Maricopa County, scored and color-coded.*
+
+*All 500 sampled properties across Maricopa County, scored and color-coded by motivation.*
+
+&nbsp;
 
 ![Filtered with score 18+](docs/screenshots/screenshot2.png)
-*Filtered view (score ≥ 18) with a property popup showing address, score, and key signals. Sensitive details are blurred.*
+
+*Filtered view (score ≥ 18) with a property popup showing address, score, and key signals. Sensitive details are blurred for privacy.*
+
+&nbsp;
 
 ## Features
 
-- 500 properties plotted on a Leaflet map (dark theme)
-- Pin colors by motivation score: Red (High ≥67), Yellow (Medium 33–66), Green (Low <33)
-- Click a pin to see address, motivation score, years owned, and absentee owner status
-- Bottom bar: score filter slider, absentee owner toggle, property count, color legend
+- Interactive dark-themed Leaflet map with 500 color-coded property pins by motivation score
+- Click pins for property details, filter by score threshold or absentee owners only
 
 ## Data
 
@@ -37,9 +43,10 @@ Public bulk data from [Maricopa County Assessor](https://mcassessor.maricopa.gov
 | Geocoding | Census Batch Geocoder (free, no API key) |
 
 ## Scoring Formula
-```
+
+​```
 motivation_score = (years_owned / 40) × 70 + absentee_owner × 30
-```
+​```
 
 `years_owned` gets 70 points because it's a continuous signal — the longer someone has held a property, the more likely they are to be open to selling. `absentee_owner` gets 30 as a flat bonus: non-resident owners tend to be more transactional, but it's a binary flag with less resolution, so it plays a supporting role.
 
@@ -47,25 +54,29 @@ motivation_score = (years_owned / 40) × 70 + absentee_owner × 30
 
 ### Backend
 
-```bash
+​```bash
 cd backend
 python -m venv .venv
 .venv\Scripts\activate        # Windows
 pip install -r requirements.txt
 uvicorn main:app --reload
-```
+​```
 
 ### Frontend
 
-```bash
+​```bash
 cd frontend
 npm install
 npm run dev
-```
+​```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+> **Note:** First run will geocode 500 addresses (~5 minutes). Results are cached to `backend/data/geocode_cache.json` for instant subsequent runs.
 
 ## Project Structure
 
-```
+​```
 motivated-signal-map/
 ├── backend/
 │   ├── main.py               # FastAPI app & endpoints
@@ -81,7 +92,7 @@ motivated-signal-map/
 │       └── api/
 └── docs/
     └── screenshots/
-```
+​```
 
 ## License
 
