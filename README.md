@@ -82,17 +82,29 @@ motivated-signal-map/
 │   ├── main.py               # FastAPI app & endpoints
 │   ├── model.py              # Scoring logic
 │   ├── geocoder.py           # Census Batch Geocoder
-│   └── data/
-│       ├── maricopa_sample_500.csv
-│       └── geocode_cache.json
+│   └── requirements.txt
 ├── frontend/
+│   ├── index.html
+│   ├── package.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   ├── vite.config.ts
 │   └── src/
+│       ├── main.tsx
+│       ├── index.css
 │       ├── App.tsx
-│       ├── components/       # Map, Sidebar
-│       └── api/
+│       ├── api/
+│       │   └── client.ts
+│       ├── components/
+│       │   ├── Map.tsx
+│       │   └── Sidebar.tsx
+│       └── types/
+│           └── index.ts
 └── docs/
     └── screenshots/
 ```
+
+> `backend/data/` (CSV + geocode cache) is excluded from version control via `.gitignore`.
 
 ## License
 
