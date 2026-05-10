@@ -12,7 +12,7 @@ Trained on real Maricopa County data (500 samples).
 File: data/maricopa_sample_500.csv
 Columns: apn, address, owner_name, years_owned, absentee_owner
 
-## Features for ML model
+## Features for model
 - years_owned (numeric)
 - absentee_owner (0 or 1)
 Output: motivation_score (0-100)
